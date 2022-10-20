@@ -4,21 +4,12 @@ pipeline {
     stage('Compile') {
       steps {
         sh './gradlew compileJava'
-        sh '''pipeline {
-    agent any
-    stages {
-    stage("Compile") {
+        sh '''stage("Compile") {
     stpes {
-    sh ".gradlew compileJava"
-    }
-    }
-    stage("Unit test") {
-    stpes {
-    sh "./gradlew test"
+        sh ".gradlew compileJava"
     }
 }
-}
-}'''
+'''
         }
       }
 
